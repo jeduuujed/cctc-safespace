@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isParticipant() {
+      return isSignedIn() && request.auth.uid in resource.data.participants;
+    }
+
+    // Profiles are created and updated only through the Express Admin SDK.
+    match /users/{userId} {
+      allow read: if isSignedIn() && request.auth.uid == userId;
+      allow create, update, delete: if false;
+    }
+
+    match /conversations/{conversationId} {
+      allow read: if isParticipant();
+      allow create, update, delete: if false;
+
+      match /messages/{messageId} {
+        allow read: if isSignedIn()
+          && exists(/databases/$(database)/documents/conversations/$(conversationId))
+          && request.auth.uid in get(/databases/$(database)/documents/conversations/$(conversationId)).data.participants;
+        allow create, update, delete: if false;
+      }
+    }
+
+    // Incident reports stay confidential and are only accessed via the backend.
+    match /reports/{reportId} {
+      allow read, write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

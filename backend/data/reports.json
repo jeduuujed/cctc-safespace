@@ -1,0 +1,420 @@
+[
+  {
+    "id": "R-1784955949844",
+    "reportId": "R-1784955949844",
+    "summary": "Student report summary: No details were provided. The report was created from the student conversation.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T05:04:37.579Z"
+      },
+      {
+        "role": "user",
+        "text": "help I was bulliednat the school campus today",
+        "ts": "2026-07-25T05:05:19.852Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T05:05:19.890Z"
+      }
+    ],
+    "studentReport": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T05:04:37.579Z"
+      },
+      {
+        "role": "user",
+        "text": "help I was bulliednat the school campus today",
+        "ts": "2026-07-25T05:05:19.852Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T05:05:19.890Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Under Review",
+    "anonymous": true,
+    "createdAt": "2026-07-25T05:05:49.844Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Ms. Santos",
+    "category": "Bullying",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: No details were provided. The report was created from the student conversation."
+  },
+  {
+    "id": "R-1784942124816",
+    "reportId": "R-1784942124816",
+    "summary": "Student report summary: No details were provided. The report was created from the student conversation.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T01:14:47.673Z"
+      },
+      {
+        "role": "user",
+        "text": "help me",
+        "ts": "2026-07-25T01:14:53.640Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:14:53.673Z"
+      },
+      {
+        "role": "user",
+        "text": "I was bullied to day at the school campus",
+        "ts": "2026-07-25T01:15:08.611Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:15:08.616Z"
+      }
+    ],
+    "studentReport": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T01:14:47.673Z"
+      },
+      {
+        "role": "user",
+        "text": "help me",
+        "ts": "2026-07-25T01:14:53.640Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:14:53.673Z"
+      },
+      {
+        "role": "user",
+        "text": "I was bullied to day at the school campus",
+        "ts": "2026-07-25T01:15:08.611Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:15:08.616Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Pending",
+    "anonymous": false,
+    "createdAt": "2026-07-25T01:15:24.816Z",
+    "reporterName": "Jedryl Remeticado",
+    "reporterEmail": "jeddelacerna1@gmail.com",
+    "reporterUid": "ZER5NVM2uEWwk6yrUq3CbWFVqos2",
+    "assignedTo": "Unassigned",
+    "category": "Bullying",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: No details were provided. The report was created from the student conversation."
+  },
+  {
+    "id": "R-1784941439962",
+    "reportId": "R-1784941439962",
+    "summary": "Student report summary: No details were provided. The report was created from the student conversation.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T01:03:18.417Z"
+      },
+      {
+        "role": "user",
+        "text": "Please help me I was bullied to day",
+        "ts": "2026-07-25T01:03:33.648Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:03:33.678Z"
+      },
+      {
+        "role": "user",
+        "text": "it happend in the campus it happend multiple times",
+        "ts": "2026-07-25T01:03:51.430Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:03:51.435Z"
+      }
+    ],
+    "studentReport": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T01:03:18.417Z"
+      },
+      {
+        "role": "user",
+        "text": "Please help me I was bullied to day",
+        "ts": "2026-07-25T01:03:33.648Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:03:33.678Z"
+      },
+      {
+        "role": "user",
+        "text": "it happend in the campus it happend multiple times",
+        "ts": "2026-07-25T01:03:51.430Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T01:03:51.435Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Under Review",
+    "anonymous": false,
+    "createdAt": "2026-07-25T01:03:59.962Z",
+    "reporterName": "Jedryl Remeticado",
+    "reporterEmail": "jeddelacerna1@gmail.com",
+    "reporterUid": "ZER5NVM2uEWwk6yrUq3CbWFVqos2",
+    "assignedTo": "Mr. Reyes",
+    "category": "Bullying",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: No details were provided. The report was created from the student conversation."
+  },
+  {
+    "id": "R-1784940842783",
+    "reportId": "R-1784940842783",
+    "summary": "Student report summary: No details were provided. The report was created from the student conversation.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-25T00:52:57.929Z"
+      },
+      {
+        "role": "user",
+        "text": "To day I was bullied by a fellow student in the campus",
+        "ts": "2026-07-25T00:53:22.761Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T00:53:22.796Z"
+      },
+      {
+        "role": "user",
+        "text": "It happend inside the campus",
+        "ts": "2026-07-25T00:53:46.055Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-25T00:53:46.059Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Pending",
+    "anonymous": true,
+    "createdAt": "2026-07-25T00:54:02.783Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Unassigned",
+    "category": "Bullying",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: No details were provided. The report was created from the student conversation."
+  },
+  {
+    "id": "R-1784344450719",
+    "reportId": "R-1784344450719",
+    "summary": "Student report summary: No details were provided. The report was created from the student conversation.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-18T03:13:57.494Z"
+      },
+      {
+        "role": "user",
+        "text": "help me",
+        "ts": "2026-07-18T03:14:01.134Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-18T03:14:01.170Z"
+      },
+      {
+        "role": "user",
+        "text": "bullied",
+        "ts": "2026-07-18T03:14:06.855Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-18T03:14:06.859Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Pending",
+    "anonymous": true,
+    "createdAt": "2026-07-18T03:14:10.719Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Unassigned",
+    "category": "Bullying",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: No details were provided. The report was created from the student conversation."
+  },
+  {
+    "id": "R-1784301840754",
+    "reportId": "R-1784301840754",
+    "summary": "Student report summary: No details were provided. The report was created from the student conversation.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-17T15:23:29.600Z"
+      },
+      {
+        "role": "user",
+        "text": "I want to report a bullying",
+        "ts": "2026-07-17T15:23:39.546Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-17T15:23:39.566Z"
+      },
+      {
+        "role": "user",
+        "text": "it happened more than once",
+        "ts": "2026-07-17T15:23:49.989Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-17T15:23:49.994Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Received",
+    "anonymous": true,
+    "createdAt": "2026-07-17T15:24:00.754Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Mr. Reyes",
+    "category": "Bullying",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: No details were provided. The report was created from the student conversation."
+  },
+  {
+    "id": "R-1784301511987",
+    "reportId": "R-1784301511987",
+    "summary": "Student report summary: [{\"role\":\"bot\",\"text\":\"Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.\",\"ts\":\"2026-07-17T15:18:03.854Z\"},{\"role\":\"user\",\"text\":\"help me pls\",\"ts\":\"2026-07-17T15:18:07.717Z\"},{\"role\":\"bot\",\"text\":\"Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?\",\"ts\":\"2026-07-17T15:18:07.757Z\"},{\"role\":\"user\",\"text\":\"I was bullied more than once\",\"ts\":\"2026-07-17T15:18:21.751Z\"},{\"role\":\"bot\",\"text\":\"Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?\",\"ts\":\"2026-07-17T15:18:21.756Z\"},{\"role\":\"user\",\"text\":\"2 times\",\"ts\":\"2026-07-17T15:18:30.053Z\"},{\"role\":\"bot\",\"text\":\"Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?\",\"ts\":\"2026-07-17T15:18:30.058Z\"}]. The report was prepared locally and includes the student’s own words and context for review.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.",
+        "ts": "2026-07-17T15:18:03.854Z"
+      },
+      {
+        "role": "user",
+        "text": "help me pls",
+        "ts": "2026-07-17T15:18:07.717Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-17T15:18:07.757Z"
+      },
+      {
+        "role": "user",
+        "text": "I was bullied more than once",
+        "ts": "2026-07-17T15:18:21.751Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-17T15:18:21.756Z"
+      },
+      {
+        "role": "user",
+        "text": "2 times",
+        "ts": "2026-07-17T15:18:30.053Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?",
+        "ts": "2026-07-17T15:18:30.058Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Resolved",
+    "anonymous": true,
+    "createdAt": "2026-07-17T15:18:31.987Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Ms. Santos",
+    "category": "Student report summary: [{\"role\":\"bot\",\"text\":\"Please tell me what happened, who was involved, when and where it occurre",
+    "priority": "Medium",
+    "generatedReport": "Student report summary: [{\"role\":\"bot\",\"text\":\"Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share.\",\"ts\":\"2026-07-17T15:18:03.854Z\"},{\"role\":\"user\",\"text\":\"help me pls\",\"ts\":\"2026-07-17T15:18:07.717Z\"},{\"role\":\"bot\",\"text\":\"Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?\",\"ts\":\"2026-07-17T15:18:07.757Z\"},{\"role\":\"user\",\"text\":\"I was bullied more than once\",\"ts\":\"2026-07-17T15:18:21.751Z\"},{\"role\":\"bot\",\"text\":\"Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?\",\"ts\":\"2026-07-17T15:18:21.756Z\"},{\"role\":\"user\",\"text\":\"2 times\",\"ts\":\"2026-07-17T15:18:30.053Z\"},{\"role\":\"bot\",\"text\":\"Thank you for sharing that. Could you tell me where it happened and whether it has happened more than once?\",\"ts\":\"2026-07-17T15:18:30.058Z\"}]. The report was prepared locally and includes the student’s own words and context for review."
+  },
+  {
+    "id": "R-1784300661691",
+    "reportId": "R-1784300661691",
+    "summary": "Student report recorded. Summary prepared locally because OpenAI is not configured. Details shared: [{\"role\":\"user\",\"text\":\"I was bullied in class today and I want to report it.\",\"ts\":\"2026-07-17T15:04:21.690Z\"}]",
+    "chat": [
+      {
+        "role": "user",
+        "text": "I was bullied in class today and I want to report it.",
+        "ts": "2026-07-17T15:04:21.690Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Pending",
+    "anonymous": true,
+    "createdAt": "2026-07-17T15:04:21.691Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Unassigned",
+    "category": "Student report recorded. Summary prepared locally because OpenAI is not configured. Details shared: [{\"role\":\"user\",\"tex",
+    "priority": "Medium",
+    "generatedReport": "Student report recorded. Summary prepared locally because OpenAI is not configured. Details shared: [{\"role\":\"user\",\"text\":\"I was bullied in class today and I want to report it.\",\"ts\":\"2026-07-17T15:04:21.690Z\"}]"
+  },
+  {
+    "id": "R-1784299863165",
+    "reportId": "R-1784299863165",
+    "summary": "Student report recorded. Summary prepared locally because OpenAI is not configured. Details shared: [{\"role\":\"user\",\"text\":\"I was bullied in class today.\",\"ts\":\"2026-07-17T14:51:03.165Z\"}]",
+    "chat": [
+      {
+        "role": "user",
+        "text": "I was bullied in class today.",
+        "ts": "2026-07-17T14:51:03.165Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Pending",
+    "anonymous": true,
+    "createdAt": "2026-07-17T14:51:03.165Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Unassigned",
+    "category": "Student report recorded. Summary prepared locally because OpenAI is not configured. Details shared: [{\"role\":\"user\",\"tex",
+    "priority": "Medium",
+    "generatedReport": "Student report recorded. Summary prepared locally because OpenAI is not configured. Details shared: [{\"role\":\"user\",\"text\":\"I was bullied in class today.\",\"ts\":\"2026-07-17T14:51:03.165Z\"}]"
+  }
+]
