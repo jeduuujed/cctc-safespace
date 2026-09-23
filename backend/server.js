@@ -11,9 +11,13 @@ dotenv.config();
 const app = express();
 app.set('trust proxy', 1);
 
+const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+if (process.env.BASE44_PUBLIC_HOST_SUFFIX) {
+  allowedOrigins.push('https://3000-' + process.env.BASE44_PUBLIC_HOST_SUFFIX);
+}
+
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000'];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
       return;

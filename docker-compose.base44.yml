@@ -1,0 +1,35 @@
+services:
+  backend:
+    image: node:18-slim
+    working_dir: /app/backend
+    volumes:
+      - ./backend:/app/backend
+    ports:
+      - "8000:5000"
+    environment:
+      - PORT=5000
+      - FIREBASE_PROJECT_ID=cctcsafespace
+      - FIREBASE_WEB_API_KEY=AIzaSyCWS_4wsw5Z_3LL_8MKXbXpg5LzB9T9wm4
+      - ADMIN_EMAILS=Admin2002@gmail.com
+      - BASE44_PUBLIC_HOST_SUFFIX=${BASE44_PUBLIC_HOST_SUFFIX}
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - /run/base44/app.env
+    command: sh -c "npm install && npm run dev"
+
+  frontend:
+    image: node:18-slim
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=https://8000-${BASE44_PUBLIC_HOST_SUFFIX}
+      - NEXT_PUBLIC_ADMIN_EMAILS=Admin2002@gmail.com
+      - BASE44_PUBLIC_HOST_SUFFIX=${BASE44_PUBLIC_HOST_SUFFIX}
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    command: sh -c "npm install && npx next dev -H 0.0.0.0 -p 3000"
+    depends_on:
+      - backend

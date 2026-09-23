@@ -1,0 +1,42 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "FIREBASE_SERVICE_ACCOUNT",
+      "description": "Firebase Admin service account JSON (from Firebase Console > Project Settings > Service Accounts > Generate new private key). Paste the entire JSON content. Required for backend Firebase operations (auth verification, Firestore, user management, messaging).",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "OPENAI_KEY",
+      "description": "OpenAI API key for the AI-guided incident reporting chat. Optional — the backend falls back to a scripted response when not set.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "EMAIL_USER",
+      "description": "Gmail address for sending report notification emails. Optional — email notifications are skipped when not set.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "EMAIL_PASS",
+      "description": "Gmail app password for EMAIL_USER. Optional — skipped when not set.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "EMAIL_TO",
+      "description": "Recipient email address for new report notifications. Optional — skipped when not set.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "AZURE_FACE_API_KEY",
+      "description": "Azure AI Face API key for optional face-login enrollment/verification. Optional — face login shows a 'service unavailable' message when not set.",
+      "requiredAtBoot": false
+    },
+    {
+      "name": "AZURE_FACE_ENDPOINT",
+      "description": "Azure AI Face endpoint URL (e.g. https://YOUR-RESOURCE.cognitiveservices.azure.com). Optional.",
+      "requiredAtBoot": false
+    }
+  ]
+}
