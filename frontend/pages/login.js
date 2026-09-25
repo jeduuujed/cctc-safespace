@@ -6,9 +6,9 @@ import { auth } from '../firebase';
 import AppHeader from '../components/AppHeader';
 import PageShell from '../components/PageShell';
 import LogoSeal from '../components/LogoSeal';
-import FaceLoginPanel from '../components/FaceLoginPanel';
+import EmailCodeLoginPanel from '../components/EmailCodeLoginPanel';
 import { getDashboardPath } from '../lib/roles';
-import { getMyProfile, registerUserProfile } from '../lib/userProfile';
+import { fallbackProfileFromUser, getMyProfile, registerUserProfile } from '../lib/userProfile';
 
 export default function Login() {
   const router = useRouter();
@@ -16,18 +16,22 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showFace, setShowFace] = useState(false);
+  const [showCodeLogin, setShowCodeLogin] = useState(false);
 
   const nextPath = typeof router.query.next === 'string' ? router.query.next : null;
 
   const redirectSignedIn = async (firebaseUser) => {
-    let profile;
+    let profile = fallbackProfileFromUser(firebaseUser);
     try {
       const data = await getMyProfile(firebaseUser);
-      profile = data.profile;
+      if (data.profile) profile = data.profile;
     } catch {
-      const data = await registerUserProfile(firebaseUser, firebaseUser.displayName);
-      profile = data.profile;
+      try {
+        const data = await registerUserProfile(firebaseUser, firebaseUser.displayName);
+        if (data.profile) profile = data.profile;
+      } catch {
+        // Backend profile is optional for login. Firebase Auth is the source of truth.
+      }
     }
     if (nextPath && nextPath.startsWith('/')) {
       router.push(nextPath);
@@ -45,7 +49,16 @@ export default function Login() {
       await redirectSignedIn(userCredential.user);
     } catch (err) {
       console.error(err);
-      setError('Login failed. Please check your credentials.');
+      const code = err?.code || '';
+      if (code === 'auth/invalid-credential' || code === 'auth/wrong-password' || code === 'auth/user-not-found') {
+        setError('Login failed. Please check your email and password.');
+      } else if (code === 'auth/too-many-requests') {
+        setError('Too many failed attempts. Please wait and try again.');
+      } else if (code === 'auth/network-request-failed') {
+        setError('Network error. Check your internet connection and try again.');
+      } else {
+        setError(err.message || 'Login failed. Please check your credentials.');
+      }
     } finally {
       setLoading(false);
     }
@@ -138,7 +151,7 @@ export default function Login() {
           <div style={{ marginTop: 16, textAlign: 'center' }}>
             <button
               type="button"
-              onClick={() => setShowFace((value) => !value)}
+              onClick={() => setShowCodeLogin((value) => !value)}
               style={{
                 background: 'transparent',
                 border: '1px solid var(--color-border)',
@@ -146,11 +159,10 @@ export default function Login() {
                 padding: '8px 12px'
               }}
             >
-              {showFace ? 'Hide Face Login' : 'Login with Face'}
+              {showCodeLogin ? 'Hide Email Code Login' : 'Login with Gmail Code'}
             </button>
-            {showFace && (
-              <FaceLoginPanel
-                mode="login"
+            {showCodeLogin && (
+              <EmailCodeLoginPanel
                 email={email}
                 onAuthenticated={async (customToken) => {
                   const cred = await signInWithCustomToken(auth, customToken);

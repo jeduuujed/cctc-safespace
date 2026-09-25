@@ -248,6 +248,15 @@ async function getAuthorizedContacts(profile, conversationType) {
     }
   }
 
+  if (conversationType === 'student_admin') {
+    if (profile.role === 'student') {
+      return listUsersByRole('admin');
+    }
+    if (profile.role === 'admin') {
+      return listUsersByRole('student');
+    }
+  }
+
   return [];
 }
 

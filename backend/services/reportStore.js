@@ -16,12 +16,25 @@ function ensureStoreFile() {
 
 function readReports() {
   ensureStoreFile();
-  return JSON.parse(fs.readFileSync(STORE_PATH, 'utf8'));
+  try {
+    return JSON.parse(fs.readFileSync(STORE_PATH, 'utf8'));
+  } catch (error) {
+    console.warn('Local reports file is corrupted; starting fresh:', error.message);
+    try {
+      fs.renameSync(STORE_PATH, `${STORE_PATH}.bak-${Date.now()}`);
+    } catch {
+      // ignore backup failure
+    }
+    writeReports([]);
+    return [];
+  }
 }
 
 function writeReports(reports) {
   ensureStoreFile();
-  fs.writeFileSync(STORE_PATH, JSON.stringify(reports, null, 2));
+  const tmpPath = `${STORE_PATH}.tmp`;
+  fs.writeFileSync(tmpPath, JSON.stringify(reports, null, 2));
+  fs.renameSync(tmpPath, STORE_PATH);
 }
 
 async function saveReport(reportDoc) {
@@ -31,15 +44,20 @@ async function saveReport(reportDoc) {
     return { mode: 'firebase', id: docRef.id };
   } catch (error) {
     console.warn('Falling back to local report storage:', error.message);
-    const reports = readReports();
-    const localDoc = {
-      id: reportDoc.reportId || `local-${Date.now()}`,
-      ...reportDoc,
-      studentReport: reportDoc.studentReport || reportDoc.chat || []
-    };
-    reports.unshift(localDoc);
-    writeReports(reports);
-    return { mode: 'local', id: localDoc.id };
+    try {
+      const reports = readReports();
+      const localDoc = {
+        id: reportDoc.reportId || `local-${Date.now()}`,
+        ...reportDoc,
+        studentReport: reportDoc.studentReport || reportDoc.chat || []
+      };
+      reports.unshift(localDoc);
+      writeReports(reports);
+      return { mode: 'local', id: localDoc.id };
+    } catch (saveErr) {
+      console.error('Local report storage also failed; report was not persisted:', saveErr);
+      return { mode: 'none', id: reportDoc.reportId || `local-${Date.now()}` };
+    }
   }
 }
 

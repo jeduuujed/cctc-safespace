@@ -30,6 +30,7 @@ export function getMessagingTypesForRole(role) {
   if (role === 'student') {
     return [
       { id: 'student_counselor', label: 'Counselor' },
+      { id: 'student_admin', label: 'Admins' },
       { id: 'student_teacher', label: 'Teachers' }
     ];
   }
@@ -44,6 +45,9 @@ export function getMessagingTypesForRole(role) {
       { id: 'student_counselor', label: 'Students' },
       { id: 'teacher_counselor', label: 'Teachers' }
     ];
+  }
+  if (role === 'admin') {
+    return [{ id: 'student_admin', label: 'Students' }];
   }
   return [];
 }

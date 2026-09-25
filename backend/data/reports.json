@@ -1,5 +1,80 @@
 [
   {
+    "id": "R-1790250540835",
+    "reportId": "R-1790250540835",
+    "summary": "Student report summary: help me Joward.",
+    "chat": [
+      {
+        "role": "bot",
+        "text": "I am your SafeSpace reporting assistant. Please tell me, in your own words, what happened. I will gently ask for one detail at a time — who was involved, when and where it happened, how often, how it made you feel, and any evidence or witnesses. I follow the CCTC Student Code of Conduct and will only use the details you share.",
+        "ts": "2026-09-24T11:48:41.173Z"
+      },
+      {
+        "role": "user",
+        "text": "help me",
+        "ts": "2026-09-24T11:48:48.408Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Do you feel comfortable telling me who was involved or who was there? First names are enough.",
+        "ts": "2026-09-24T11:48:48.418Z"
+      },
+      {
+        "role": "user",
+        "text": "Joward",
+        "ts": "2026-09-24T11:48:58.549Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Do you feel comfortable telling me who was involved or who was there? First names are enough.",
+        "ts": "2026-09-24T11:48:58.554Z"
+      }
+    ],
+    "studentReport": [
+      {
+        "role": "bot",
+        "text": "I am your SafeSpace reporting assistant. Please tell me, in your own words, what happened. I will gently ask for one detail at a time — who was involved, when and where it happened, how often, how it made you feel, and any evidence or witnesses. I follow the CCTC Student Code of Conduct and will only use the details you share.",
+        "ts": "2026-09-24T11:48:41.173Z"
+      },
+      {
+        "role": "user",
+        "text": "help me",
+        "ts": "2026-09-24T11:48:48.408Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Do you feel comfortable telling me who was involved or who was there? First names are enough.",
+        "ts": "2026-09-24T11:48:48.418Z"
+      },
+      {
+        "role": "user",
+        "text": "Joward",
+        "ts": "2026-09-24T11:48:58.549Z"
+      },
+      {
+        "role": "bot",
+        "text": "Thank you for sharing that. Do you feel comfortable telling me who was involved or who was there? First names are enough.",
+        "ts": "2026-09-24T11:48:58.554Z"
+      }
+    ],
+    "evidenceURLs": [],
+    "status": "Pending",
+    "anonymous": true,
+    "createdAt": "2026-09-24T11:49:00.835Z",
+    "reporterName": null,
+    "reporterEmail": null,
+    "reporterUid": null,
+    "assignedTo": "Unassigned",
+    "category": "Incident",
+    "priority": "Medium",
+    "severity": "Unclassified",
+    "offenseCategory": "",
+    "recommendedSanction": "",
+    "classificationConfidence": "low",
+    "classificationNotes": "The reported conduct could not be matched to a specific handbook offense. The Student Discipline Committee will determine the classification based on the gravity of the case.",
+    "generatedReport": "Student report summary: help me Joward."
+  },
+  {
     "id": "R-1784955949844",
     "reportId": "R-1784955949844",
     "summary": "Student report summary: No details were provided. The report was created from the student conversation.",

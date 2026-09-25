@@ -22,6 +22,12 @@ function priorityBadgeClass(p) {
   return 'badge badge--medium';
 }
 
+function severityBadgeClass(severity) {
+  if (severity === 'Major') return 'badge badge--critical';
+  if (severity === 'Minor') return 'badge badge--medium';
+  return 'badge badge--review';
+}
+
 const ASSIGNEES = ['Unassigned', 'Ms. Santos', 'Mr. Reyes'];
 const STATUSES = ['Pending', 'Received', 'Under Review', 'Resolved'];
 
@@ -219,6 +225,21 @@ export default function AdminDashboard() {
               <div style={{ fontSize: 26 }}>📄</div>
               <div style={{ fontSize: 13, fontWeight: 600, marginTop: 6 }}>View Full Reports</div>
             </Link>
+            <Link
+              href="/messages"
+              style={{
+                background: '#fff',
+                borderRadius: 12,
+                padding: '1rem',
+                textDecoration: 'none',
+                color: '#111',
+                boxShadow: 'var(--shadow-card)',
+                textAlign: 'center'
+              }}
+            >
+              <div style={{ fontSize: 26 }}>✉️</div>
+              <div style={{ fontSize: 13, fontWeight: 600, marginTop: 6 }}>Messages</div>
+            </Link>
             {[
               { label: 'Total Reports', n: stats.total, icon: '📋', color: '#111' },
               { label: 'Pending', n: stats.pending, icon: '🕐', color: '#ea580c' },
@@ -360,6 +381,26 @@ export default function AdminDashboard() {
                     <strong>Severity Level:</strong>{' '}
                     <span className={priorityBadgeClass(selected.priority)}>{selected.priority}</span>
                   </p>
+                  <p>
+                    <strong>Handbook Classification:</strong>{' '}
+                    <span className={severityBadgeClass(selected.raw?.severity)}>
+                      {(selected.raw?.severity || 'Unclassified').toUpperCase()} Offense
+                    </span>
+                  </p>
+                  {selected.raw?.offenseCategory && (
+                    <p>
+                      <strong>Matched Offense:</strong> {selected.raw.offenseCategory}
+                    </p>
+                  )}
+                  {selected.raw?.recommendedSanction && (
+                    <p>
+                      <strong>First-Offense Sanction:</strong>{' '}
+                      <span style={{ color: '#444', fontWeight: 400 }}>{selected.raw.recommendedSanction}</span>
+                    </p>
+                  )}
+                  {selected.raw?.classificationNotes && (
+                    <p style={{ color: '#666', fontSize: 13, fontStyle: 'italic' }}>{selected.raw.classificationNotes}</p>
+                  )}
                   <label style={{ display: 'block', marginTop: 12, fontWeight: 600 }}>Status</label>
                   <select
                     value={editStatus}

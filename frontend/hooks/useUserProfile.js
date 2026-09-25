@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuthUser } from './useStudentAuth';
-import { getMyProfile, registerUserProfile } from '../lib/userProfile';
+import { fallbackProfileFromUser, getMyProfile, registerUserProfile } from '../lib/userProfile';
 
 export function useUserProfile() {
   const user = useAuthUser();
@@ -30,7 +30,7 @@ export function useUserProfile() {
         } catch (regErr) {
           if (!cancelled) {
             setError(regErr.message || 'Failed to load profile');
-            setProfile(null);
+            setProfile(fallbackProfileFromUser(user));
           }
         }
       }

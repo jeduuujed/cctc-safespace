@@ -96,8 +96,8 @@ export default function StudentDashboard() {
                 { href: '/report', icon: '💬', title: 'AI Chatbot', sub: 'Guided incident questions' },
                 { href: '/report', icon: '📝', title: 'Submit Incident Report', sub: 'Chat, evidence, submit' },
                 { href: '/track', icon: '📊', title: 'My Reports', sub: 'View report status' },
-                { href: '/messages', icon: '✉️', title: 'Messages', sub: 'Counselor and teachers' },
-                { href: '/account', icon: '⚙', title: 'Account Settings', sub: 'Profile and face login' },
+                { href: '/messages', icon: '✉️', title: 'Messages', sub: 'Counselors, teachers, and admins' },
+                { href: '/account', icon: '⚙', title: 'Account Settings', sub: 'Profile and sign-in settings' },
                 { href: '/support', icon: '♡', title: 'Get Support', sub: 'Mental health resources' }
               ].map((c) => (
                 <Link

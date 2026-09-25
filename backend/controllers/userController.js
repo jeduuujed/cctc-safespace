@@ -67,7 +67,7 @@ exports.listAssignedStudents = async (req, res) => {
 exports.adminUpdateUser = async (req, res) => {
   try {
     const { uid } = req.params;
-    const { role, name, studentId, assignedCounselorId, authorizedTeacherIds, faceLoginEnabled } = req.body;
+    const { role, name, studentId, assignedCounselorId, authorizedTeacherIds } = req.body;
 
     if (uid === req.user.uid && role && role !== req.profile.role) {
       return res.status(403).json({ error: 'You cannot change your own role' });
@@ -75,7 +75,7 @@ exports.adminUpdateUser = async (req, res) => {
 
     const profile = await updateUserProfile(
       uid,
-      { role, name, studentId, assignedCounselorId, authorizedTeacherIds, faceLoginEnabled },
+      { role, name, studentId, assignedCounselorId, authorizedTeacherIds },
       'admin'
     );
     res.json({ profile });

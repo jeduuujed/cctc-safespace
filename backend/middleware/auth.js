@@ -13,8 +13,15 @@ exports.authenticateUser = async (req, res, next) => {
     return res.status(401).json({ error: 'Authentication required' });
   }
 
+  let decodedToken;
   try {
-    const decodedToken = await admin.auth().verifyIdToken(token);
+    decodedToken = await admin.auth().verifyIdToken(token);
+  } catch (err) {
+    console.error('Token verification failed:', err);
+    return res.status(401).json({ error: 'Invalid or expired token' });
+  }
+
+  try {
     req.user = decodedToken;
 
     let profile = await getUserByUid(decodedToken.uid);
@@ -32,8 +39,8 @@ exports.authenticateUser = async (req, res, next) => {
       getAllowedAdminEmails().includes(decodedToken.email?.toLowerCase() || '');
     next();
   } catch (err) {
-    console.error('Authentication failed:', err);
-    return res.status(401).json({ error: 'Invalid or expired token' });
+    console.error('Profile lookup failed after token verification:', err);
+    return res.status(503).json({ error: 'Authentication service is unavailable' });
   }
 };
 

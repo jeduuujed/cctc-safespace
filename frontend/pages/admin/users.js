@@ -88,7 +88,6 @@ export default function AdminUsersPage() {
                   <th>Student ID</th>
                   <th>Counselor</th>
                   <th>Teachers</th>
-                  <th>Face login</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,16 +148,6 @@ export default function AdminUsersPage() {
                           </option>
                         ))}
                       </select>
-                    </td>
-                    <td>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={!!item.faceLoginEnabled}
-                          onChange={(e) => saveUser(item.uid, { faceLoginEnabled: e.target.checked })}
-                        />{' '}
-                        Enabled
-                      </label>
                     </td>
                   </tr>
                 ))}

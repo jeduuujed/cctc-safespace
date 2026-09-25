@@ -1,4 +1,4 @@
-const { generateAIResponse, generateSummary } = require('../services/openaiService');
+const { generateAIResponse, generateSummary, classifyIncidentSeverity } = require('../services/openaiService');
 const { sendNewReportNotification } = require('../services/emailService');
 const { saveReport, listReports, updateReport } = require('../services/reportStore');
 const { listUsersByRole } = require('../services/userStore');
@@ -44,7 +44,6 @@ exports.chatWithAI = async (req, res) => {
 
     const normalizedMessages = normalizeMessages(conversation);
     const prompt = [
-      'You are a calm, supportive school safety assistant. Ask one short guided question at a time and do not invent facts. Only collect the details the student explicitly shares. Keep the tone compassionate and non-judgmental. Do not ask for personal details beyond what is necessary for the report. If enough information is present, offer a brief summary and ask the student to confirm before submitting.',
       `Student conversation so far: ${JSON.stringify(normalizedMessages)}`,
       `Latest student message: ${message}`
     ].join('\n');
@@ -73,11 +72,38 @@ exports.submitReport = async (req, res) => {
 
     const normalizedMessages = normalizeMessages(messages);
 
-    if (!normalizedMessages.length) {
+    if (!normalizedMessages.length && (!Array.isArray(evidenceURLs) || evidenceURLs.length === 0)) {
       return res.status(400).json({ error: 'Conversation is required' });
     }
 
-    const summary = summaryOverride || (await generateSummary(JSON.stringify(normalizedMessages)));
+    let summary = '';
+    let classification = {
+      severity: null,
+      offenseCategory: '',
+      recommendedSanction: '',
+      confidence: 'low',
+      notes:
+        'Severity could not be determined at submission time. The Student Discipline Committee will classify the case based on the gravity of the offense.'
+    };
+
+    try {
+      if (summaryOverride) {
+        summary = summaryOverride;
+      } else {
+        summary = await generateSummary(JSON.stringify(normalizedMessages));
+      }
+      classification = await classifyIncidentSeverity(normalizedMessages);
+    } catch (aiErr) {
+      console.error('Report saved without AI enrichment (summary/classification failed):', aiErr);
+    }
+
+    if (typeof summary !== 'string' || !summary.trim()) {
+      summary = normalizedMessages.length
+        ? 'Student report summary: ' + normalizedMessages.map((entry) => entry.text).join(' ')
+        : 'Student report submitted with evidence attachments.';
+    }
+
+    const priority = classification.severity === 'Major' ? 'High' : 'Medium';
     const reportDoc = {
       reportId: `R-${Date.now()}`,
       summary,
@@ -92,7 +118,12 @@ exports.submitReport = async (req, res) => {
       reporterUid: anonymous ? null : reporterUid || null,
       assignedTo: 'Unassigned',
       category: extractIncidentCategory(normalizedMessages, summary),
-      priority: 'Medium',
+      priority,
+      severity: classification.severity || 'Unclassified',
+      offenseCategory: classification.offenseCategory || '',
+      recommendedSanction: classification.recommendedSanction || '',
+      classificationConfidence: classification.confidence || 'low',
+      classificationNotes: classification.notes || '',
       generatedReport: summary
     };
 

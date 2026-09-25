@@ -26,3 +26,16 @@ exports.sendNewReportNotification = async (summary) => {
   });
 };
 
+exports.sendLoginCode = async (email, code) => {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    throw new Error('Gmail email credentials are not configured');
+  }
+
+  await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: 'Your CCTC SafeSpace authentication code',
+    text: `Your CCTC SafeSpace authentication code is ${code}. It expires in 10 minutes. If you did not request this code, you can ignore this email.`
+  });
+};
+

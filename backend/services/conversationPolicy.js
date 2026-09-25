@@ -1,4 +1,4 @@
-const VALID_TYPES = ['student_counselor', 'teacher_counselor', 'student_teacher'];
+const VALID_TYPES = ['student_counselor', 'teacher_counselor', 'student_teacher', 'student_admin'];
 
 function evaluateConversationAccess(creatorProfile, type, other) {
   if (!creatorProfile || !other) {
@@ -78,11 +78,25 @@ function evaluateConversationAccess(creatorProfile, type, other) {
     return { ok: false, error: 'Unauthorized conversation type' };
   }
 
+  if (type === 'student_admin') {
+    const pair = [creatorProfile.role, other.role].sort().join('-');
+    if (pair !== 'admin-student') {
+      return { ok: false, error: 'Student-admin conversations require one student and one admin' };
+    }
+    const studentId = creatorProfile.role === 'student' ? creatorProfile.uid : other.uid;
+    const adminId = creatorProfile.role === 'admin' ? creatorProfile.uid : other.uid;
+    return {
+      ok: true,
+      participants: [studentId, adminId],
+      roles: { [studentId]: 'student', [adminId]: 'admin' }
+    };
+  }
+
   return { ok: false, error: 'Invalid conversation type' };
 }
 
 function getConversationTypesForRole(role) {
-  if (role === 'student') return ['student_counselor', 'student_teacher'];
+  if (role === 'student') return ['student_counselor', 'student_teacher', 'student_admin'];
   if (role === 'teacher') return ['teacher_counselor', 'student_teacher'];
   if (role === 'counselor') return ['student_counselor', 'teacher_counselor'];
   if (role === 'admin') return VALID_TYPES;

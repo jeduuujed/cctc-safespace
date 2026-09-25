@@ -136,7 +136,7 @@ export default function Report() {
             <ChatBot
               onMessagesChange={handleChatChange}
               beforeInput={<EvidenceUpload compact onUploadComplete={setEvidenceURLs} />}
-              initialPrompt="Please tell me what happened, who was involved, when and where it occurred, how often it happened, and how you feel right now. I will gently guide the conversation and only use the details you share."
+              initialPrompt="I am your SafeSpace reporting assistant. Please tell me, in your own words, what happened. I will gently ask for one detail at a time — who was involved, when and where it happened, how often, how it made you feel, and any evidence or witnesses. I follow the CCTC Student Code of Conduct and will only use the details you share."
             />
 
             <div style={{ marginTop: '1.35rem' }}>

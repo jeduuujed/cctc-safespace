@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import AppHeader from '../components/AppHeader';
 import PageShell from '../components/PageShell';
-import FaceLoginPanel from '../components/FaceLoginPanel';
 import { useUserProfile } from '../hooks/useUserProfile';
 import { updateMyProfile } from '../lib/userProfile';
 import { getDashboardPath, getRoleLabel } from '../lib/roles';
@@ -88,7 +87,6 @@ export default function AccountPage() {
             {error && <p style={{ color: '#b91c1c' }}>{error}</p>}
             <p style={{ fontSize: 14 }}>Email: {profile.email}</p>
             {profile.studentId && <p style={{ fontSize: 14 }}>Student ID: {profile.studentId}</p>}
-            <FaceLoginPanel mode="settings" user={user} />
             <div style={{ marginTop: 24 }}>
               <button type="button" onClick={() => signOut(auth)}>
                 Sign Out

@@ -6,7 +6,7 @@ import { auth } from '../firebase';
 import AppHeader from '../components/AppHeader';
 import PageShell from '../components/PageShell';
 import LogoSeal from '../components/LogoSeal';
-import { registerUserProfile } from '../lib/userProfile';
+import { registerUserProfile, fallbackProfileFromUser } from '../lib/userProfile';
 import { getDashboardPath } from '../lib/roles';
 
 export default function Register() {
@@ -36,8 +36,14 @@ export default function Register() {
       if (name.trim()) {
         await updateProfile(cred.user, { displayName: name.trim() });
       }
-      const data = await registerUserProfile(cred.user, name.trim(), studentId.trim());
-      router.push(getDashboardPath(data.profile?.role, cred.user.email));
+      let profile = fallbackProfileFromUser(cred.user);
+      try {
+        const data = await registerUserProfile(cred.user, name.trim(), studentId.trim());
+        if (data.profile) profile = data.profile;
+      } catch {
+        // Account was created in Firebase. Continue even if backend profile save is unavailable.
+      }
+      router.push(getDashboardPath(profile?.role, cred.user.email));
     } catch (err) {
       console.error(err);
       setError(err.message || 'Could not create account.');

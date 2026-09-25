@@ -18,6 +18,8 @@ const counselor = { uid: 'c1', role: 'counselor' };
 const otherCounselor = { uid: 'c2', role: 'counselor' };
 const teacher = { uid: 't1', role: 'teacher' };
 const unauthorizedTeacher = { uid: 't2', role: 'teacher' };
+const admin = { uid: 'a1', role: 'admin' };
+const otherAdmin = { uid: 'a2', role: 'admin' };
 
 test('student can only message assigned counselor', () => {
   const ok = evaluateConversationAccess(student, 'student_counselor', counselor);
@@ -52,8 +54,27 @@ test('teacher and counselor can message each other separately from student chats
   assert.equal(denied.ok, false);
 });
 
+test('student and admin can message each other exclusively', () => {
+  const ok = evaluateConversationAccess(student, 'student_admin', admin);
+  assert.equal(ok.ok, true);
+  assert.equal(ok.roles[student.uid], 'student');
+  assert.equal(ok.roles[admin.uid], 'admin');
+
+  const adminInitiated = evaluateConversationAccess(admin, 'student_admin', student);
+  assert.equal(adminInitiated.ok, true);
+  assert.deepEqual(adminInitiated.participants, [student.uid, admin.uid]);
+});
+
+test('student_admin is denied for anyone other than student and admin', () => {
+  assert.equal(evaluateConversationAccess(student, 'student_admin', otherStudent).ok, false);
+  assert.equal(evaluateConversationAccess(counselor, 'student_admin', student).ok, false);
+  assert.equal(evaluateConversationAccess(teacher, 'student_admin', student).ok, false);
+  assert.equal(evaluateConversationAccess(admin, 'student_admin', otherAdmin).ok, false);
+});
+
 test('role conversation types stay separated', () => {
-  assert.deepEqual(getConversationTypesForRole('student'), ['student_counselor', 'student_teacher']);
+  assert.deepEqual(getConversationTypesForRole('student'), ['student_counselor', 'student_teacher', 'student_admin']);
   assert.deepEqual(getConversationTypesForRole('teacher'), ['teacher_counselor', 'student_teacher']);
   assert.deepEqual(getConversationTypesForRole('counselor'), ['student_counselor', 'teacher_counselor']);
+  assert.deepEqual(getConversationTypesForRole('admin'), ['student_counselor', 'teacher_counselor', 'student_teacher', 'student_admin']);
 });

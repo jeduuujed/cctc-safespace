@@ -24,7 +24,6 @@ function normalizeUserDoc(doc) {
     studentId: data.studentId || '',
     assignedCounselorId: data.assignedCounselorId || null,
     authorizedTeacherIds: Array.isArray(data.authorizedTeacherIds) ? data.authorizedTeacherIds : [],
-    faceLoginEnabled: !!data.faceLoginEnabled,
     createdAt: data.createdAt?.toDate?.()?.toISOString?.() || data.createdAt || null,
     updatedAt: data.updatedAt?.toDate?.()?.toISOString?.() || data.updatedAt || null
   };
@@ -75,7 +74,6 @@ async function createOrUpdateUserProfile({ uid, email, name, studentId }) {
       studentId: normalizedStudentId,
       assignedCounselorId: null,
       authorizedTeacherIds: [],
-      faceLoginEnabled: false,
       createdAt: now
     });
   } else {
@@ -126,9 +124,6 @@ async function updateUserProfile(uid, updates, actorRole) {
     if (Array.isArray(updates.authorizedTeacherIds)) {
       allowed.authorizedTeacherIds = updates.authorizedTeacherIds.filter((id) => typeof id === 'string').slice(0, 50);
     }
-    if (typeof updates.faceLoginEnabled === 'boolean') {
-      allowed.faceLoginEnabled = updates.faceLoginEnabled;
-    }
   } else if (typeof updates.name === 'string') {
     // Non-admin users may only update their display name
   } else {
@@ -140,27 +135,6 @@ async function updateUserProfile(uid, updates, actorRole) {
   return getUserByUid(uid);
 }
 
-async function setFaceLogin(uid, { enabled, facePersonId }) {
-  const ref = getDb().collection(USERS_COLLECTION).doc(uid);
-  const update = {
-    faceLoginEnabled: !!enabled,
-    updatedAt: admin.firestore.FieldValue.serverTimestamp()
-  };
-  if (facePersonId === null) {
-    update.facePersonId = admin.firestore.FieldValue.delete();
-  } else if (typeof facePersonId === 'string') {
-    update.facePersonId = facePersonId;
-  }
-  await ref.update(update);
-  return getUserByUid(uid);
-}
-
-async function getFacePersonId(uid) {
-  const doc = await getDb().collection(USERS_COLLECTION).doc(uid).get();
-  if (!doc.exists) return null;
-  return doc.data().facePersonId || null;
-}
-
 module.exports = {
   getUserByUid,
   getUserByEmail,
@@ -168,7 +142,5 @@ module.exports = {
   listUsersByRole,
   listAllUsers,
   updateUserProfile,
-  setFaceLogin,
-  getFacePersonId,
   getAllowedAdmins
 };

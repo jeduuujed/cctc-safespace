@@ -4,7 +4,7 @@ A full-stack student safety platform with:
 - AI-guided incident reporting (OpenAI)
 - Role-based private messaging (student-counselor, teacher-counselor, student-teacher)
 - Firebase Authentication, Firestore, and Storage
-- Optional Azure Face login (server-verified, then Firebase custom token)
+- Gmail one-time-code authentication (server-verified, then Firebase custom token)
 
 ### Structure
 
@@ -37,14 +37,6 @@ ADMIN_EMAILS=admin@your-school.edu
 EMAIL_USER=
 EMAIL_PASS=
 EMAIL_TO=
-```
-
-Optional face login:
-
-```
-AZURE_FACE_API_KEY=
-AZURE_FACE_ENDPOINT=https://YOUR-RESOURCE.cognitiveservices.azure.com
-AZURE_FACE_PERSON_GROUP=cctc-safespace
 ```
 
 ```bash
@@ -101,18 +93,9 @@ Users cannot assign privileged roles to themselves.
 5. The teacher cannot see student-counselor chats.
 6. Teacher and counselor can message each other on the Teacher/Counselor tabs.
 
-### Face login
+### Gmail code authentication
 
-Face login is **not** a client-side photo match. Enrollment and verification call Azure Face from the Express server, then issue a Firebase custom token.
-
-Required Azure setup:
-
-1. Create an Azure AI Face resource and apply for [Face Limited Access](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview-identity) if Identification is gated.
-2. For production liveness, add [Azure Face liveness](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/how-to/face-liveness) (separate SDK). This app does not fake liveness.
-3. Grant the Firebase service account permission to create custom tokens.
-4. Set `AZURE_FACE_API_KEY` and `AZURE_FACE_ENDPOINT` on the backend.
-
-Until those are configured, the Face Login UI explains the missing service and password login still works.
+The login page can send a six-digit, single-use authentication code through Gmail. Configure `EMAIL_USER` with the Gmail sender address and `EMAIL_PASS` with a Gmail app password. The account must already exist in Firebase Authentication, and Firebase custom-token creation must be enabled for the service account.
 
 ### Incident reporting
 
@@ -126,4 +109,5 @@ Anonymous **incident reports** remain available. That is separate from direct me
 - `GET /api/reports/mine` – signed-in student’s identifiable reports
 - `/api/messaging/*` – authenticated conversations
 - `/api/users/*` – profiles and admin access management
-- `/api/face-auth/*` – optional face enrollment/verify
+- `POST /api/auth/request-code` – send a Gmail authentication code
+- `POST /api/auth/verify-code` – verify the code and issue a Firebase custom token

@@ -56,7 +56,7 @@ export default function TeacherDashboard() {
             {[
               { href: '/messages?type=student_teacher', title: 'Student Conversations', sub: 'Authorized students only' },
               { href: '/messages?type=teacher_counselor', title: 'Messages', sub: 'Talk with counselors' },
-              { href: '/account', title: 'Account Settings', sub: 'Profile and face login' }
+              { href: '/account', title: 'Account Settings', sub: 'Profile and sign-in settings' }
             ].map((card) => (
               <Link
                 key={card.title}
